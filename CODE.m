@@ -102,9 +102,9 @@ for frame = 1 : no_frames
                 
 %% Cyclic prefix calculation
                 if((ofdm_sym_no == 1) || (ofdm_sym_no == 8))
-                    cp_length = 288; %%modified
+                    cp_length = 288 + 16*kappa; %%reset, mistake in REPORT.pdf
                 else
-                    cp_length = 288 + 16*kappa; %%modified
+                    cp_length = 288; %%reset, mistake in REPORT.pdf
                 end
                 cp = ofdm_samples(1,end-cp_length + 1:end);
                 pp = max(power(abs([cp,ofdm_samples]),2));      % peak power
